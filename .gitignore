@@ -1,0 +1,18 @@
+# OS Metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Workspace
+.vscode/
+.idea/
+*.swp
+
+# Temporary files
+*.tmp
+*.log
+
+# Sensitive environment data
+.env
+*.pem
+*.key
