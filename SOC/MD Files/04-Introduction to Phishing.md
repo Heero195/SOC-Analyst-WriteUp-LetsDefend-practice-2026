@@ -84,6 +84,10 @@ An **Email Header** is the control metadata block preceding the email body conte
 1. **Identifies True Provenance**: Reveals the authentic sender, return address, and receiving endpoints.
 2. **Facilitates Filtering**: Enables Spam Blockers and Email Security Gateways to evaluate message legitimacy.
 3. **Traceability**: Allows SOC analysts to map the exact hop-by-hop transit path of an email across Mail Transfer Agents (MTAs).
+ <img width="1420" height="881" alt="image" src="https://github.com/user-attachments/assets/139f9f28-04b1-4a7f-936d-113caaebc663" />
+
+
+<img width="416" height="70" alt="image" src="https://github.com/user-attachments/assets/3597c28d-60e0-4d08-bfc2-2cbf112ef06d" />
 
 ---
 
