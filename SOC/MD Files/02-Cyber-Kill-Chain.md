@@ -1,4 +1,5 @@
-# LECTURE2: Cyber Kill Chain
+# 📘 Lecture 2: Cyber Kill Chain
+---
 ## 1) Introduction to Cyber Kill Chain
 
 ## 📌 Overview
