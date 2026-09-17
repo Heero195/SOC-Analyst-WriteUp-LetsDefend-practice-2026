@@ -86,7 +86,7 @@ Successful SOC operations rely on **three core pillars**:
 * ❌ **Ignoring Cache Dates**: Failing to click "Re-analyze" on stale VirusTotal scans.
 * ❌ **Rushing to Automated Sandboxes**: Skipping static analysis and contextual log correlation before dynamic execution.
 * ❌ **Tunnel-Vision Log Analysis**: Focusing on a single isolated alert rather than tracing pre- and post-incident activity timelines.
-```
+
 
 
 
