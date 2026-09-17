@@ -21,6 +21,9 @@ Position & Significance in Cybersecurity
 > [!TIP]
 > **Prevalence**: Phishing remains the #1 most prevalent **Initial Access / Attack Vector** utilized by adversaries in modern cyber campaigns.
 
+
+<img width="950" height="681" alt="image" src="https://github.com/user-attachments/assets/77071c38-5271-4015-b376-66a873fb7fe3" />
+
 ---
 
 Social Engineering & Psychological Manipulation
