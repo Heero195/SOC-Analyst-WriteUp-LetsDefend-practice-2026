@@ -63,3 +63,40 @@ There are several actions that an attacker can take before, during, and after a 
 
 ###  The Real-life attack Scenario items above explain an aspect of an actual cyber attack. Based solely on this information, what is the number of distinct actions taken during the "Reconnaissance" phase, which is the first step of the Cyber Kill Chain?
 > **ANSWER: 3**
+
+
+## 4) Weaponization
+
+## ⚔️ Phase 2: Weaponization
+
+### 1. Core Concept
+* **Definition**: The second phase (Step 2) of the Cyber Kill Chain. Adversaries utilize intelligence gathered during Reconnaissance to craft, customize, or select appropriate exploits, malware payloads, and malicious delivery scripts.
+* **Key Characteristic**: **No activity occurs on the victim's infrastructure yet.** All preparation and weaponization activities take place entirely on adversary-owned infrastructure, making this phase invisible to victim monitoring tools and logs.
+
+---
+
+### 2. Attacker Behaviors vs. Defender (Blue Team) Strategies
+
+| Role | Primary Activities |
+|---|---|
+| 🥷 **Attacker** | • Writing or customizing malware payloads (Ransomware, Trojans, Infostealers).<br>• Developing exploit payloads targeting specific unpatched software vulnerabilities.<br>• Crafting social engineering assets (Phishing email templates, weaponized Office docs with malicious macros).<br>• Selecting and packing optimal tooling to bypass anticipated security controls. |
+| 🛡️ **Defender (Blue Team / SOC)** | • *Cannot directly block* payload creation on adversary infrastructure.<br>• Conducting routine vulnerability assessments to eliminate exploitable entry points.<br>• Enforcing rapid software and OS security patching.<br>• Utilizing Threat Intelligence feeds to study emerging attack tools and proactively write YARA/Sigma detection rules. |
+
+---
+
+### 📝 Quiz Answers & Scenario Breakdown
+
+* **Question**: How many separate activities were performed in the "Weaponization" phase in the scenario?
+  * **Answer**: `2`
+
+#### 🔬 Complete Scenario Activity Mapping
+
+| Activity # | Scenario Event Description | Cyber Kill Chain Phase |
+|---|---|---|
+| **1** | Target employee email addresses were collected. | **Reconnaissance** |
+| **2** | A phishing email template was generated. | **Weaponization** |
+| **3** | A Word document titled `Salaries.docx` containing malicious macro code was created. | **Weaponization** |
+| **4** | The prepared phishing email was transmitted to victims. | **Delivery** |
+| **5** | The email was viewed and the attachment was downloaded by the user. | **Delivery** |
+| **6** | The document was opened and macro code execution occurred. | **Exploitation** |
+| **7** | Ransomware payload was installed and executed on the host. | **Installation** |
