@@ -1,7 +1,18 @@
-# 02 - Cyber Kill Chain
+# LECTURE2: Cyber Kill Chain
+## 1) Introduction to Cyber Kill Chain
 
 ## 📌 Overview
 The **Cyber Kill Chain** framework, developed by Lockheed Martin, breaks down a cyber attack into 7 distinct phases. Understanding these phases allows SOC analysts to identify where an attack was detected and stop it before completion.
+
+
+### Which organization was the Cyber Kill Chain model developed by?
+> **ANSWER: Lockheed Martin**
+### In what year was the organization that developed the Cyber Kill Chain model founded?
+> **ANSWER: 1995**
+### In what year was the Cyber Kill Chain model developed?
+> **ANSWER: 2011**
+
+
 
 ---
 
