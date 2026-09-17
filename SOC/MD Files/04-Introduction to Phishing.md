@@ -71,3 +71,42 @@ Analyzing mail gateway logs helps SOC analysts assess attack scope, target audie
 #### 📊 Target Audience & Timezone Intelligence
 * **Target Concentration**: If malicious emails repeatedly target specific employees, their addresses may have been harvested via OSINT tools (e.g., **`theHarvester`** on Kali Linux) or leaked on public paste sites (PasteBin).
 * **Timezone Analysis**: Emails received consistently outside standard corporate working hours indicate the adversary is operating from a **different geographical time zone**, aiding threat actor profiling.
+
+---
+
+## 3) What is an Email Header and How to Read Them?
+## 📧 Email Header Structure & Analysis
+
+### What is an Email Header?
+An **Email Header** is the control metadata block preceding the email body content. It contains crucial details regarding the sender, recipient, routing path, timestamps, and security authentication signatures.
+
+#### Key Functions of Email Headers:
+1. **Identifies True Provenance**: Reveals the authentic sender, return address, and receiving endpoints.
+2. **Facilitates Filtering**: Enables Spam Blockers and Email Security Gateways to evaluate message legitimacy.
+3. **Traceability**: Allows SOC analysts to map the exact hop-by-hop transit path of an email across Mail Transfer Agents (MTAs).
+
+---
+
+### Essential Email Header Fields
+
+| Header Field | Description & Purpose |
+|---|---|
+| `From` | Claimed sender address displayed to the user. |
+| `Return-Path` | Address where bounce-backs and non-delivery reports (NDRs) are sent. |
+| `Reply-To` | Address designated to receive user responses (frequently manipulated in phishing). |
+| `Received` | Added by each MTA in the hop path; lists sending/receiving IP addresses and exact timestamps (read from bottom to top). |
+| `Message-ID` | A globally unique string of alphanumeric characters identifying a specific email (no two emails share the same `Message-ID`). |
+| `DKIM-Signature` | Cryptographic digital signature verifying message integrity and domain ownership. |
+| `MIME-Version` | Multipurpose Internet Mail Extensions encoding standard converting non-text content (images, PDFs, attachments) into ASCII text for SMTP transmission. |
+| `X-Spam-Status` | Displays the security gateway's calculated spam score and rule matches. |
+
+---
+
+### 📝 Quiz Answers & Header Analysis Walkthrough
+
+* **Question 1**: If we wanted to respond to this email, what would be the recipient's address?
+  * **Answer**: `info@letsdefend.io`
+* **Question 2**: What year was the email sent?
+  * **Answer**: `2022`
+* **Question 3**: What is the `Message-ID`? (without `< >`)
+  * **Answer**: `74bda5edf824cea8aad36e707.675c34a61f.20220321204512.a02caaccf3.a268ce5a@mail41.suw13.rsgsv.net`
