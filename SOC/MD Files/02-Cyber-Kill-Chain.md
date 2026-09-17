@@ -199,3 +199,31 @@ There are several actions that an attacker can take before, during, and after a 
   * The adversary successfully delivered the file to the host (completing **Step 3: Delivery**).
   * However, because the malware **was never executed**, code execution failed at **Step 4: Exploitation**.
   * Consequently, the EDR solution flagged the dormant artifact before the adversary could compromise system control or establish persistence (**Step 5: Installation**).
+
+## 8) Command and Control (C2)
+  * ## 📡 Phase 6: Command and Control (C2)
+
+### 1. Core Concept
+* **Definition**: The sixth phase (Step 6) of the Cyber Kill Chain. In this stage, the adversary establishes a **covert, two-way communication channel** between the compromised endpoint and a remote Command and Control (C2) Server.
+* **Objective**: Allows adversaries to issue interactive remote commands and receive data responses from the compromised host, laying the groundwork for final objective execution.
+* **Key Distinguishing Note**: This phase is strictly limited to **establishing and maintaining communication lines**. It does *not* encompass the execution of final destructive objectives (e.g., data exfiltration, ransomware encryption).
+
+---
+
+### 2. Attacker Tactics vs. Defender (Blue Team) Controls
+
+| Role | Primary Activities / Defensive Controls |
+|---|---|
+| 🥷 **Attacker** | • Deploying C2 infrastructure to listen for inbound agent callback requests (utilizing frameworks like Cobalt Strike, Metasploit, Sliver, or PowerShell Empire).<br>• Configuring victim malware to initiate callbacks (*beaconing* or *reverse shells*) over protocols such as DNS, HTTPS, or HTTP. |
+| 🛡️ **Defender (Blue Team / SOC)** | • **Network Security Monitoring (NSM)**: Detecting periodic, automated outbound connection spikes (*beaconing traffic*), DNS tunneling requests, or non-standard outbound port usage.<br>• **Threat Intelligence Enrichment**: Ingesting known C2 IP and Domain blocklists into Firewalls, Web Proxies, and EDR platforms for automated blocking.<br>• **C2 Agent Artifact Hunting**: Scanning endpoints for known C2 agent signatures, named pipes, and memory artifacts. |
+
+---
+
+### 📝 Quiz Answers & Scenario Analysis
+
+* **Scenario**: A SOC Analyst detected an internal Windows workstation **successfully establishing an outbound connection to a suspicious external IP**, confirming the adversary gained **remote command execution capability**.
+* **Question**: According to the scenario above, what is the final Cyber Kill Chain step in which the attacker succeeded?
+  * **Answer**: `6` (Command and Control)
+* **Explanation**:
+  * Successfully establishing an outbound channel that grants interactive remote control proves the adversary fully completed **Step 6 (Command and Control)**.
+  * The adversary had not yet executed final destructive actions (**Step 7: Actions on Objectives**).
