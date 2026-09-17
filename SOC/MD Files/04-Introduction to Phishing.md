@@ -114,3 +114,58 @@ An **Email Header** is the control metadata block preceding the email body conte
   * **Answer**: `2022`
 * **Question 3**: What is the `Message-ID`? (without `< >`)
   * **Answer**: `74bda5edf824cea8aad36e707.675c34a61f.20220321204512.a02caaccf3.a268ce5a@mail41.suw13.rsgsv.net`
+
+---
+
+## 4) Email Header Analysis
+Here are the key questions we need to answer when checking headings during a Phishing analysis:
+
+Was the email sent from the correct SMTP server?
+Are the data "From" and "Return-Path / Reply-To" the same?
+
+---
+
+
+## 5) Static Analysis
+By querying VirusTotal for web addresses in emails, you can find out if the 
+antivirus engines detect the web address as harmful. If someone else has already 
+analyzed the same address/file in VirusTotal, VirusTotal will not analyze it 
+from scratch, it will show you the old analysis result. This feature can be 
+considered both an advantage and a disadvantage.
+
+---
+
+## 6) Dynamic Analysis
+
+
+
+### Purpose of Dynamic Analysis
+Dynamic analysis involves executing suspicious attachments or interacting with phishing links in an isolated environment to observe runtime behaviors without endangering production host systems.
+
+---
+
+### Browser-Based Link Inspection & Parameter Sanitization
+Analysts can use cloud-based browser tools (e.g., **Browserling**) to safely inspect phishing URLs without exposing local browser vulnerabilities (Zero-day exploits).
+
+> [!CAUTION]
+> **Tracking Parameter Risk**: Phishing URLs often contain tracking parameters embedding the target's email address (e.g., `http://phishing-site.com/login?user=victim@company.com`).
+> **Simply visiting the URL alerts adversaries that the target email address is active**, increasing future social engineering precision.
+> **Remediation**: Always sanitize or strip user tracking parameters before navigating to suspicious links during analysis.
+
+---
+
+### Sandbox Environments & Malware Evasion
+
+Automated Sandboxes detonate files and record behavioral telemetry (Registry changes, network socket calls, process trees).
+
+#### Industry Standard Sandbox Solutions:
+* **AnyRun** (Interactive cloud sandbox)
+* **Hybrid Analysis** (Powered by Falcon Sandbox)
+* **Joe Sandbox** (Deep ecosystem execution)
+* **VMRay** (Evasion-resistant hypervisor sandbox)
+
+> [!WARNING]
+> **Evasion Delays (Sleep Execution)**: Malware frequently incorporates programmed **sleep timers** (waiting minutes or hours before executing malicious activity) to exceed automated sandbox analysis timeouts. Analysts must allow sufficient observation time before declaring a sample benign.
+
+> [!NOTE]
+> **Image-Based Phishing (Steganography)**: The absence of text URLs or executable attachments does not guarantee safety. Adversaries embed phishing text, QR codes, or malicious macros inside **embedded images** to bypass automated mail gateway filters.
