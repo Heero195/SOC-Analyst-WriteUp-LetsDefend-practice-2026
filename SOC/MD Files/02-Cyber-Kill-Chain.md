@@ -14,40 +14,17 @@ The **Cyber Kill Chain** framework, developed by Lockheed Martin, breaks down a 
 
 
 
----
+## 2) Cyber Kill Chain Steps
 
-## 🎯 The 7 Phases of the Cyber Kill Chain
-
-```text
-[1. Reconnaissance] ➔ [2. Weaponization] ➔ [3. Delivery] ➔ [4. Exploitation]
-                                                                  │
-[7. Actions on Objectives] ◄── [6. Command & Control] ◄── [5. Installation]
 ```
+There are several actions that an attacker can take before, during, and after a successful cyber attack. These actions are sequential, and if the attacker fails at one stage, it is not possible to execute the next step of the cyber attack. The Cyber Kill Chain model divides these stages of attackers into 7 steps. The steps of cyber attacks are depicted in the visual  below:
 
-### 1. Reconnaissance
-* **Description**: Attacker gathers intelligence on the target (IPs, open ports, employee emails, tech stack).
-* **SOC Detection**: Port scanning logs, OSINT monitoring, web server reconnaissance logs.
+1.Reconnaissance
+2.Weaponization
+3.Delivery
+4.Exploitation
+5.Installation
+6.Command & Control (C2)
+7.Actions on Objectives
 
-### 2. Weaponization
-* **Description**: Pairing malware payload with an exploit (e.g., weaponized PDF/Word document with macro).
-* **SOC Detection**: Occurs on attacker infrastructure (hard to detect directly until delivery).
-
-### 3. Delivery
-* **Description**: Transmitting the weaponized payload to the victim (Phishing email, USB, malicious website).
-* **SOC Detection**: Secure Email Gateway (SEG) alerts, Web Proxy logs, IDS/IPS signatures.
-
-### 4. Exploitation
-* **Description**: Payload code executes on victim device by exploiting a vulnerability or user action.
-* **SOC Detection**: EDR process execution alerts, suspicious PowerShell/Cmd spawned from Office apps.
-
-### 5. Installation
-* **Description**: Attacker establishes persistence on the victim system (Registry run keys, Scheduled tasks, Services).
-* **SOC Detection**: EDR persistence alerts, Windows Event Logs (ID 4697, ID 7045).
-
-### 6. Command & Control (C2)
-* **Description**: Establishing a remote communication channel back to the attacker's server.
-* **SOC Detection**: Beaconing traffic, unusual DNS requests, outbound connections over non-standard ports.
-
-### 7. Actions on Objectives
-* **Description**: Attacker achieves goal (Data exfiltration, ransomware encryption, lateral movement).
-* **SOC Detection**: Large outbound data transfers, volume shadow copy deletion, domain controller access.
+```
