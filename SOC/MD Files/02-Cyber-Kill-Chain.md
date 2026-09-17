@@ -144,7 +144,7 @@ There are several actions that an attacker can take before, during, and after a 
 | **11, 12, 13** | EDR alert triggered, SOC analyst triaged incident and successfully contained host. | **Detection & Response (Defensive)** |
 
 
-## 6) Delivery
+## 6) Exploitation
 ## ⚡ Phase 4: Exploitation
 
 ### 1. Core Concept
@@ -170,3 +170,32 @@ There are several actions that an attacker can take before, during, and after a 
 
 > [!TIP]
 > **Prerequisite for Attack Success**: The exploit payload must perfectly match the victim host's underlying architecture and software version. If the adversary failed to gather accurate reconnaissance data in Step 1, the exploit will fail or crash the application.
+
+
+## 7) Installation
+## 🏰 Phase 5: Installation
+
+### 1. Core Concept
+* **Definition**: The fifth phase (Step 5) of the Cyber Kill Chain. The primary objective of the adversary in this stage is establishing **Persistence** on the victim host.
+* **Rationale**: The initial vulnerability exploited in Step 4 could be patched by administrators, or the victim device might be rebooted. To prevent losing control, the adversary installs a covert **Backdoor** to guarantee continuous, long-term access.
+
+---
+
+### 2. Attacker Techniques vs. Defender (Blue Team) Controls
+
+| Role | Primary Activities / Defensive Controls |
+|---|---|
+| 🥷 **Attacker** | • Installing persistent malware artifacts, Trojans, Remote Access Tools (RATs), or droppers.<br>• Uploading WebShells to compromised web application servers.<br>• Establishing **Persistence Mechanics**: Adding Scheduled Tasks, creating new Windows Services, modifying Registry Run keys, or injecting local Firewall bypass rules.<br>• Executing **Privilege Escalation** (gaining SYSTEM / Root privileges) to entrench deeper into the OS and wipe audit logs. |
+| 🛡️ **Defender (Blue Team / SOC)** | • Operating with an **"Assume Breach"** Threat Hunting mindset.<br>• Utilizing EDR solutions to monitor unauthorized configuration modifications, registry key edits, and scheduled tasks.<br>• Enforcing strict Administrative Privilege boundaries (Privileged Access Management / PAM).<br>• Enforcing **Application Whitelisting / Code Signing** (restricting execution to digitally signed, authorized binaries).<br>• Auditing and restricting access to sensitive system paths (`System32`, Startup folders, Task Scheduler). |
+
+---
+
+### 📝 Quiz Answers & Scenario Analysis
+
+* **Scenario**: EDR detected a malicious payload file on an endpoint, but the SOC Analyst verified that the file **had not been executed** (`not executed`) and no malicious process activity occurred.
+* **Question**: In which step of the Cyber Kill Chain did the attacker fail, leading to the detection of the attack?
+  * **Answer**: `4` (Exploitation)
+* **Explanation**:
+  * The adversary successfully delivered the file to the host (completing **Step 3: Delivery**).
+  * However, because the malware **was never executed**, code execution failed at **Step 4: Exploitation**.
+  * Consequently, the EDR solution flagged the dormant artifact before the adversary could compromise system control or establish persistence (**Step 5: Installation**).
