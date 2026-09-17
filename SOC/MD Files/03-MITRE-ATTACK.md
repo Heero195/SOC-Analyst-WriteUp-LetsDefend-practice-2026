@@ -1,4 +1,4 @@
-# LECTURE 3: MITRE ATT&CK Framework
+# Lecture 3: MITRE ATT&CK Framework
 
 ---
 
