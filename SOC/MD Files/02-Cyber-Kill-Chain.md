@@ -227,3 +227,29 @@ There are several actions that an attacker can take before, during, and after a 
 * **Explanation**:
   * Successfully establishing an outbound channel that grants interactive remote control proves the adversary fully completed **Step 6 (Command and Control)**.
   * The adversary had not yet executed final destructive actions (**Step 7: Actions on Objectives**).
+
+
+ ## 9) Actions on Objectives
+* ## 🎯 Phase 7: Actions on Objectives
+
+### 1. Core Concept
+* **Definition**: The seventh and **final stage (Step 7)** of the Cyber Kill Chain framework.
+* **Significance**: Having successfully navigated all six preceding stages, the adversary executes their ultimate campaign mission (e.g., financial extortion, espionage, operational disruption, or data destruction).
+
+---
+
+### 2. Attacker Behaviors vs. Defender (Blue Team) Controls
+
+| Role | Primary Activities / Defensive Controls |
+|---|---|
+| 🥷 **Attacker** | • Encrypting sensitive data using Ransomware for financial extortion.<br>• Exfiltrating confidential documents and intellectual property (**Data Exfiltration**).<br>• Wiping host assets or destroying system logs using utilities like Sysinternals `Sdelete` or Wiper malware.<br>• Manipulating, corrupting, or modifying critical database records.<br>• Executing Privilege Escalation and **Lateral Movement** to expand control across adjacent network servers. |
+| 🛡️ **Defender (Blue Team / SOC)** | • **Data Loss Prevention (DLP)**: Deploying DLP controls to monitor and block unauthorized outbound transfers of sensitive data.<br>• **Outbound Network Monitoring**: Configuring alerts for abnormal, high-volume outbound network traffic spikes (**Outbound Traffic Anomaly**).<br>• **Database & File Access Control**: Enforcing strict Access Control Lists (ACLs) on critical databases and file shares.<br>• **Behavioral Anomaly Detection**: Triggering alerts when accounts access critical repositories outside operational hours or beyond assigned job roles. |
+
+---
+
+### 📝 Quiz Answers & Scenario Analysis
+
+* **Question**: At what stage of the Cyber Kill Chain did the threat actor (e.g., "Cobalt Group") use the `Sdelete` tool to wipe data?
+  * **Answer**: `7` (Actions on Objectives)
+* **Explanation**:
+  * Executing system destruction, file wiping via `Sdelete`, or destroying audit trails directly fulfills the adversary's ultimate end goal (**Step 7: Actions on Objectives**).
