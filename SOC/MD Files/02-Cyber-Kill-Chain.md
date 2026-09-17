@@ -100,3 +100,45 @@ There are several actions that an attacker can take before, during, and after a 
 | **5** | The email was viewed and the attachment was downloaded by the user. | **Delivery** |
 | **6** | The document was opened and macro code execution occurred. | **Exploitation** |
 | **7** | Ransomware payload was installed and executed on the host. | **Installation** |
+
+
+
+## 5) Delivery
+## 📦 Phase 3: Delivery
+
+### 1. Core Concept
+* **Definition**: The third phase (Step 3) of the Cyber Kill Chain. This phase marks the **very first interaction** between the adversary and the victim environment.
+* **Adversary Objective**: Successfully transmit weaponized artifacts (malware payloads, malicious links, exploit files) to the target endpoint or corporate network.
+
+---
+
+### 2. Attacker Vectors vs. Defender (Blue Team) Controls
+
+| Role | Delivery Vectors / Defensive Controls |
+|---|---|
+| 🥷 **Attacker** | • Transmitting emails with weaponized attachments or credential phishing URLs.<br>• Distributing malicious links and payloads over social media / messaging apps.<br>• Hosting drive-by download sites or executing Water-Hole attacks on industry websites.<br>• Direct file uploads to exposed web servers or cloud storage repositories.<br>• Physical Delivery: Dropping weaponized USB drives in corporate parking lots or office areas (USB Drop Attack). |
+| 🛡️ **Defender (Blue Team / SOC)** | • Deploying Email Security Gateways (enforcing SPF, DKIM, DMARC, anti-phishing filters).<br>• Automated attachment inspection using Antivirus engines and Cloud Sandboxes.<br>• Conducting regular Security Awareness Training for organization staff.<br>• Restricting removable storage devices via Group Policy Objects (GPO USB restriction).<br>• Monitoring Firewall, Web Proxy logs, and behavioral network anomaly detection. |
+
+---
+
+### 📝 Quiz Answers & Scenario Analysis
+
+* **Question 1**: According to the Attack Scenario items above, how many different actions were performed in the "Delivery" phase?
+  * **Answer**: `2`
+  * **Explanation**: **Action 6** (Dropping malicious USB drives on the sidewalk near company premises) and **Action 7** (Employee picking up and plugging the USB into an internal corporate host).
+* **Question 2**: How many separate activities were performed in the "Weaponization" phase in this scenario?
+  * **Answer**: `2`
+  * **Explanation**: **Action 4** (Using Metasploit to backdoor a legitimate `putty.exe` binary) and **Action 5** (Copying the generated backdoor to multiple USB drives).
+
+---
+
+#### 🔬 Complete USB Attack Scenario Breakdown
+
+| Activity # | Scenario Event Description | Cyber Kill Chain Phase |
+|---|---|---|
+| **2, 3** | Shodan infrastructure scanning and OSINT Windows OS enumeration. | **Reconnaissance** |
+| **4, 5** | Embedding payload into `putty.exe` and loading onto multiple USB drives. | **Weaponization** |
+| **6, 7** | Dropping USBs near corporate offices and employee plugging USB into company PC. | **Delivery** |
+| **8, 9** | Executing backdoored `putty.exe` and triggering a reverse shell connection. | **Exploitation** |
+| **10** | Creating a Windows Scheduled Task for persistent system access. | **Installation** |
+| **11, 12, 13** | EDR alert triggered, SOC analyst triaged incident and successfully contained host. | **Detection & Response (Defensive)** |
