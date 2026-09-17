@@ -1,33 +1,32 @@
-# 01 - SOC Fundamentals
-
-## 📌 Overview
-A **Security Operations Center (SOC)** is a centralized unit within an organization responsible for monitoring, detecting, analyzing, and responding to cybersecurity incidents on an ongoing basis.
+# 📘 Lecture 1: SOC Fundamentals
 
 ---
 
-## 👥 Key SOC Roles & Tiers
+## 1. Overview of SOC (What is a SOC?)
 
-| Tier | Role | Primary Responsibilities |
+A **Security Operations Center (SOC)** is a centralized organizational unit responsible for continuously monitoring, detecting, analyzing, and responding to cybersecurity incidents.
+
+Successful SOC operations rely on **three core pillars**:
+* 👤 **People**: Skilled cybersecurity professionals equipped with analytical mindsets and up-to-date threat intelligence.
+* ⚙️ **Processes**: Standardized incident response workflows aligned with industry frameworks such as **NIST SP 800-61, PCI-DSS, and HIPAA**.
+* 🛠️ **Technology**: Integrated security tools tailored to the organization's architecture and operational requirements.
+
+---
+
+## 2. SOC Operational Models
+
+| SOC Model | Operational Structure | Target Use Case |
 |---|---|---|
-| **Tier 1** | Triage Analyst | Continuously monitors SIEM alerts, filters out false positives, and escalates true incidents. |
-| **Tier 2** | Incident Responder | Conducts deep-dive investigations, correlates logs, isolates infected endpoints, and performs containment. |
-| **Tier 3** | Threat Hunter / Specialist | Actively hunts for hidden threats, analyzes malware, and creates custom detection rules (YARA/Sigma). |
-| **SOC Lead / Manager** | Operations Lead | Manages SOC operations, handles major incident escalation, and reports to CISO. |
+| **In-house SOC** | Fully built, staffed, and managed internally by the organization. | Large enterprises and financial institutions with dedicated budgets. |
+| **Virtual SOC** | Distributed team working remotely without a fixed physical facility. | Agile organizations seeking cost savings on physical infrastructure. |
+| **Co-Managed SOC** | Hybrid model combining internal analysts with an External MSSP. | Organizations balancing internal control with external expertise. |
+| **Command SOC** | Master SOC overseeing multiple regional or subsidiary SOC facilities. | Multinational telecom providers, defense agencies, and conglomerates. |
 
 ---
 
-## 🛠️ Essential SOC Tooling
+## 3. SOC Roles & Responsibilities
 
-1. **SIEM (Security Information and Event Management)**: Centralized log aggregation (Splunk, Elastic, Microsoft Sentinel).
-2. **EDR (Endpoint Detection and Response)**: Real-time endpoint monitoring and containment (CrowdStrike, Defender for Endpoint).
-3. **SOAR (Security Orchestration, Automation, and Response)**: Automated playbooks for rapid response (Cortex XSOAR, Shuffle).
-4. **Threat Intelligence Platforms (TIP)**: Contextual enrichment (VirusTotal, AlienVault OTX, AbuseIPDB).
-
----
-
-## 🔄 SOC Incident Response Lifecycle (NIST SP 800-61)
-
-1. **Preparation**: Configuring tools, policies, and sensors.
-2. **Detection & Analysis**: Triaging alerts and validating incident scope.
-3. **Containment, Eradication & Recovery**: Stopping the threat, removing malware, restoring systems.
-4. **Post-Incident Activity**: Lessons learned, updating detection signatures.
+```text
+[Tier 1 SOC Analyst: Triage & Filtering] ➔ [Tier 2 SOC Analyst: Deep Analysis & Incident Response]
+                                                                  │
+[SOC Lead / Manager: Operations & Strategy] ◄── [Tier 3 Analyst / Threat Hunter: APT & Malware Analysis]
