@@ -30,3 +30,63 @@ Successful SOC operations rely on **three core pillars**:
 [Tier 1 SOC Analyst: Triage & Filtering] ➔ [Tier 2 SOC Analyst: Deep Analysis & Incident Response]
                                                                   │
 [SOC Lead / Manager: Operations & Strategy] ◄── [Tier 3 Analyst / Threat Hunter: APT & Malware Analysis]
+```
+
+* 🟢 **SOC Analyst (Tier 1 / Tier 2 / Tier 3)**:
+  * *Tier 1 (Triage)*: Monitors SIEM alerts, validates initial events, and filters out False Positives.
+  * *Tier 2 (Incident Response)*: Investigates root causes, correlates log sources, and executes remediation playbooks.
+  * *Tier 3 (Specialist)*: Conducts deep-dive malware analysis, reverse engineering, and custom detection engineering (YARA/Sigma).
+* 🔴 **Incident Responder**: Leads active containment, eradication, and post-breach mitigation during security incidents.
+* 🟣 **Threat Hunter**: Proactively searches for covert adversaries (APTs) that evade traditional perimeter controls.
+* 🛠️ **Security Engineer**: Deploys, maintains, and integrates security tooling (SIEM, EDR, SOAR).
+* 👔 **SOC Manager**: Manages operations, budgeting, compliance reporting, and strategic alignment with executive leadership (CISO).
+
+---
+
+## 4. Core SOC Technology Stack
+
+### 1. SIEM (Security Information and Event Management)
+* **Function**: Centralizes log aggregation and delivers real-time security event correlation and alerting.
+* **Industry Tools**: Splunk, IBM QRadar, ArcSight, FortiSIEM, Microsoft Sentinel.
+
+### 2. Log Management
+* Centralizes event logs across diverse log sources: Web Servers, Windows/Linux OS, Firewalls, Web Proxies, and EDR agents.
+* Enables analysts to query historical traffic, DNS requests, source IPs, and non-standard port activities.
+
+### 3. EDR (Endpoint Detection and Response)
+* **Function**: Provides granular visibility and threat containment directly at the endpoint level.
+* **Key Capabilities**:
+  * **Telemetry Inspection**: Process tree analysis, network socket connections, browser history, and registry modifications.
+  * **Live Response**: Remote command-line access for live forensic investigation.
+  * **Network Isolation**: Instantly isolates compromised hosts to prevent lateral movement.
+* **Industry Tools**: SentinelOne, CrowdStrike Falcon, VMware Carbon Black, Microsoft Defender for Endpoint.
+
+### 4. SOAR (Security Orchestration, Automation, and Response)
+* Automates repetitive investigation steps and response workflows using structured **Playbooks**.
+* **Industry Tools**: Splunk Phantom, Palo Alto Cortex XSOAR, Demisto.
+
+### 5. Threat Intelligence Feeds
+* Enriches alerts with known Indicators of Compromise (IOCs: MD5/SHA256 hashes, malicious IP addresses, C2 domains).
+* Key Sources: VirusTotal, AbuseCH, Cisco Talos, AlienVault OTX.
+
+---
+
+## 5. Incident Response Lifecycle (NIST SP 800-61)
+
+1. 🛡️ **Preparation**: Establishing policies, hardening assets, deploying sensors, and training staff.
+2. 🔍 **Detection & Analysis**: Triaging alerts, assessing severity, and determining incident blast radius.
+3. 🚧 **Containment, Eradication & Recovery**: Isolating compromised endpoints, purging malicious artifacts, and restoring services safely.
+4. 📝 **Post-Incident Activity**: Conducting Lessons Learned reviews and updating detection signatures.
+
+---
+
+## ⚠️ 6. Common Pitfalls to Avoid as a SOC Analyst
+
+* ❌ **Over-reliance on VirusTotal**: A `0/70` detection ratio does not guarantee safety (e.g., brand-new zero-day malware).
+* ❌ **Ignoring Cache Dates**: Failing to click "Re-analyze" on stale VirusTotal scans.
+* ❌ **Rushing to Automated Sandboxes**: Skipping static analysis and contextual log correlation before dynamic execution.
+* ❌ **Tunnel-Vision Log Analysis**: Focusing on a single isolated alert rather than tracing pre- and post-incident activity timelines.
+```
+
+---
+
