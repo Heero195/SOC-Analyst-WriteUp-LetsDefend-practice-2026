@@ -120,8 +120,8 @@ An **Email Header** is the control metadata block preceding the email body conte
 ## 4) Email Header Analysis
 Here are the key questions we need to answer when checking headings during a Phishing analysis:
 
-Was the email sent from the correct SMTP server?
-Are the data "From" and "Return-Path / Reply-To" the same?
+- Was the email sent from the correct SMTP server?
+- Are the data "From" and "Return-Path / Reply-To" the same?
 
 ---
 
