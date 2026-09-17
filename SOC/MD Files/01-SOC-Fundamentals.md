@@ -87,6 +87,41 @@ Successful SOC operations rely on **three core pillars**:
 * ❌ **Rushing to Automated Sandboxes**: Skipping static analysis and contextual log correlation before dynamic execution.
 * ❌ **Tunnel-Vision Log Analysis**: Focusing on a single isolated alert rather than tracing pre- and post-incident activity timelines.
 
+---
+Virtual SOC works remotely?  
+> **ANSWER: Virtual SOC**
 
+Responsible for connecting security products?  
+> **ANSWER: Security Engineer**
+
+What is SOC?  
+> **ANSWER: Security Operation Center**
+
+Most important tool?  
+> **ANSWER: All of this, and much more**
+
+Internal + MSSP model?  
+> **ANSWER: Co-Managed SOC**
+
+Find vulnerabilities before attackers?  
+> **ANSWER: Threat Hunter**
+
+Goal of SIEM?  
+> **ANSWER: To provide real-time logging of events in an environment.**
+
+LetsDefend SIEM page?  
+> **ANSWER: Monitoring**
+
+What is EDR?  
+> **ANSWER: Software that monitors endpoint devices rather than the entire network.**
+
+NIST Incident Lifecycle?  
+> **ANSWER: Preparation, Detection/Analysis, Containment/Eradication and Recovery, Post-Incident Activity**
+
+Threat Intelligence Feed does NOT provide?  
+> **ANSWER: A sample of the infected file**
+
+Common mistake?  
+> **ANSWER: Insufficient log analysis**
 
 
