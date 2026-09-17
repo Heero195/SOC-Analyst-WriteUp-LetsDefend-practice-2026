@@ -88,5 +88,5 @@ Successful SOC operations rely on **three core pillars**:
 * ❌ **Tunnel-Vision Log Analysis**: Focusing on a single isolated alert rather than tracing pre- and post-incident activity timelines.
 ```
 
----
+
 
