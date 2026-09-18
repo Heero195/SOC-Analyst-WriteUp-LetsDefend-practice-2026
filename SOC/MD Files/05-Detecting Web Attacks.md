@@ -5,7 +5,6 @@
 ## 1) Introduction
 
 ## 📌 Overview
-## Web Attacks 101 Course Overview
 
 What Are Web Attacks?
 - **Concept:** Web applications provide services to users through a web browser interface (e.g., Google, Facebook, and YouTube web versions).
