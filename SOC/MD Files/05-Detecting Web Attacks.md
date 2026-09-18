@@ -62,3 +62,57 @@ against web applications (WAF, IPS, SIEM rules...).
   8. **Software and Data Integrity Failures:** Code and infrastructure that do not protect against integrity violations (e.g., untrusted plugins or unverified CI/CD pipelines).
   9. **Security Logging and Monitoring Failures:** Insufficient logging, monitoring, and alerting, leaving attacks undetected in real time.
   10. **Server-Side Request Forgery (SSRF):** A vulnerability that allows an attacker to induce the server-side application to make HTTP requests to an unintended destination.
+---
+
+## 4) How Web Applications Work
+# Web Application Architecture & The HTTP Protocol
+
+## Overview of the HTTP Protocol
+- **Communication Model:** Client-Server architecture; the client sends an HTTP request, and the web server returns an HTTP response.
+- **Network Layer:** Operates at the application layer (**Layer 7 - Application**) of the OSI model, on top of underlying protocols such as Ethernet, IP, TCP, and SSL/TLS.
+
+---
+
+## HTTP Request Structure
+Consists of three main components, with an empty line separating the headers from the body:
+
+### Request Line
+- **HTTP Method:** Standard methods such as GET, POST, etc.
+- **Requested Resource:** The path to the requested resource (e.g., `/` indicates the root/homepage).
+
+### Key Request Headers
+- `Host`: Specifies the domain name of the target web server.
+- `User-Agent`: Details the client browser and operating system (frequently examined to identify automated vulnerability scanners).
+- `Cookie`: Stores session state data, allowing users to remain logged in without re-authenticating.
+- `Upgrade-Insecure-Requests`: Indicates client preference for an encrypted connection via SSL/HTTPS.
+- `Accept`: Content types the client can process.
+- `Accept-Encoding`: Compression algorithms supported by the client.
+- `Accept-Language`: Preferred display language of the client.
+- `Connection`: TCP connection management (`keep-alive` to maintain persistence or `close` to terminate after delivery).
+
+### Request Message Body
+- Contains payload data sent to the server (e.g., authentication credentials, form inputs, or upload parameters via POST).
+
+---
+
+## HTTP Response Structure
+Composed of three core elements:
+
+### Status Line
+Includes the HTTP protocol version and the response code (**Status Code**):
+- `100 - 199`: Informational responses.
+- `200 - 299`: Successful operations (e.g., `200 OK`).
+- `300 - 399`: Redirection messages.
+- `400 - 499`: Client errors (e.g., `403 Forbidden`, `404 Not Found`).
+- `500 - 599`: Server errors (e.g., `500 Internal Server Error`).
+
+### Common Response Headers
+- `Date`: Timestamp indicating when the response was generated and sent.
+- `Server`: Web server software version and underlying operating system (useful for reconnaissance analysis).
+- `Last-Modified`: Last modification timestamp of the resource (utilized by caching mechanisms).
+- `Content-Type`: MIME type of the returned payload (HTML, JSON, media streams, etc.).
+- `Content-Length`: Size of the response payload in bytes.
+- `Connection`: Network connection status directives.
+
+### Response Body
+- The actual resource returned by the server based on client demand (e.g., HTML source to render, API response datasets, raw files).
