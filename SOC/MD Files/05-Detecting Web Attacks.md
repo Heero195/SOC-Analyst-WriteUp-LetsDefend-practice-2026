@@ -252,5 +252,31 @@ Attackers exploited a bash flaw to inject commands into unexpected HTTP Headers 
 ---
 
 
+## 8) Detecting Insecure Direct Object Reference (IDOR) Attacks
+
+## Nature & Mechanism
+- **Nature:** Occurs when a web application lacks proper authorization checks or implements loose access controls. IDOR ranks #1 in the 2021 OWASP Top 10 list (under the **Broken Access Control** category).
+- **Mechanism:** Attackers manipulate parameters that directly reference objects (e.g., modifying `?id=1` to `?id=2` in the URL) to unauthorizedly view, modify, or delete other users' data.
+- **Difference:** Unlike SQL Injection or XSS, IDOR does not rely on injecting special characters or malicious payloads; it directly exploits logical flaws in the application's authorization mechanism.
+
+---
+
+## Prevention Methods (For Developers)
+- **Authorization Check:** Always verify whether the account making the request is authorized to access or modify the requested object.
+- **Limit Direct Parameters:** Rely on user identification data stored in server-side Sessions rather than accepting direct identifiers (like an `id` parameter) supplied by the client.
+
+---
+
+## Detection & Log Analysis (For SOC Analysts)
+Because IDOR attacks do not use obvious malicious payloads, detection relies primarily on analyzing anomalous behavior within Access Logs:
+- **Check Request Volume:** Look for instances where a single IP address sends a high volume of requests to the same endpoint (e.g., `wp-admin/user-edit.php`) in a very short period.
+- **Find Patterns:** Identify brute-force enumeration attempts by looking for parameters that change in a predictable, sequential numeric pattern (e.g., `user_id=1`, `user_id=2`, `user_id=3`).
+- **Identify Automated Tools:** Inspect the `User-Agent` header for traces of automated vulnerability scanners or brute-forcing tools like `wfuzz` or `Burp Suite`.
+- **Evaluate Attack Success:**
+  - **Status Code:** HTTP codes like `302` (Redirect) or `403` (Forbidden) typically indicate that the application blocked the attempt (failed attack).
+  - **Response Size:** If user data is successfully retrieved, the response sizes will generally vary due to different name lengths and data. If a massive number of requests return the exact same byte size (e.g., consistently 5691 bytes), it is likely returning a generic default or error page (indicating a failed attack).
+
+---
+
 
 
