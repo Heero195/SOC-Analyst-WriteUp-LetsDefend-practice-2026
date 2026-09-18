@@ -126,4 +126,56 @@ Includes the HTTP protocol version and the response code (**Status Code**):
 ### Response Body
 - The actual resource returned by the server based on client demand (e.g., HTML source to render, API response datasets, raw files).
 <img width="528" height="154" alt="image" src="https://github.com/user-attachments/assets/95a060df-f233-4bdb-802f-a5f9f7b9cae7" />
+---
+
+## 5) Detecting SQL Injection Attacks
+
+## What is SQL Injection (SQLi) & Classifications
+- **Definition:** A critical attack vector where a web application directly concatenates unsanitized user-supplied input into SQL queries.
+- **Impact:**
+  - Authentication bypass.
+  - Operating system command execution (e.g., via `xp_cmdshell`).
+  - Sensitive data exfiltration.
+  - Creating, updating, or deleting database records.
+- **Three Primary SQLi Categories:**
+  - **In-band SQLi (Classic SQLi):** The attacker sends the query and receives the results or database errors over the same communication channel (HTTP response). It is the easiest to exploit.
+  - **Inferential SQLi (Blind SQLi):** The application does not return data directly. The attacker reconstructs data by observing application behavior, such as true/false logic (Boolean-based) or response delays (Time-based).
+  - **Out-of-band SQLi:** The database server sends exfiltrated data through a separate channel or protocol outside the application (e.g., DNS queries, HTTP callbacks).
+
+<img width="1668" height="796" alt="image" src="https://github.com/user-attachments/assets/c1246700-462d-4e29-9588-6de8246840a7" />
+
+
+
+---
+
+## Identifying SQLi Payloads
+- **Special Characters & Syntax:** Single quotes (`'`), SQL comment indicators (`-- -`, `#`), parentheses (`()`), and URL-encoded symbols (`%20`, `%27`).
+- **SQL Keywords:** Look for terms such as `SELECT`, `UNION`, `INSERT`, `UPDATE`, `WHERE`, `AND`, `OR`, `CHR()`, and `CONVERT()`.
+- **Classic Authentication Bypass Payload:** `' OR 1=1 -- -` (forces the query condition to evaluate to `True` regardless of input).
+- **Inspection Vectors in HTTP Requests:**
+  - URL query parameters (`GET` requests, e.g., `?id=1`).
+  - Request message body (`POST` form data, JSON payloads).
+  - HTTP request headers (`User-Agent`, `Referer`, `Cookie`).
+
+---
+
+## Detecting Automated Scanning Tools (e.g., Sqlmap)
+When analyzing web server access logs, automated tools exhibit distinct patterns:
+- **User-Agent String:** Often contains explicit tool identifiers or version numbers (e.g., `sqlmap/1.x`, `Nikto`) unless modified.
+- **Request Frequency:** Exceptionally high volume in short time intervals (e.g., $>50$ requests per second, compared to $\approx 1$ request per second for normal users).
+- **Payload Signature & Complexity:** Excessively complex nested payloads, or payloads explicitly embedding the tool name (e.g., `sqlmap' OR 1=1`).
+
+---
+
+## SOC Analyst Access Log Investigation Workflow
+1. **URL Decoding:** Translate percent-encoded characters (`%27`, `%20`) to reveal the plaintext payload. *(Note: Never upload production logs containing sensitive corporate data to public third-party online decoders).*
+2. **Identify Origin & Timeline:** Determine the attacker's client IP address and the exact timestamp when anomalous activity initiated.
+3. **Evaluate Attack Outcome (Success vs. Failure):**
+   - **HTTP Status Codes:** Examine response codes (`200 OK`, `302 Found`, `500 Internal Server Error`).
+   - **Response Size:** Compare response payload sizes (Content-Length) across requests. A noticeable deviation in byte size often indicates successful data retrieval.
+   - **Escalation:** Escalate suspicious or confirmed successful attacks to Tier 2 / Incident Response teams.
+<img width="1744" height="767" alt="image" src="https://github.com/user-attachments/assets/0c84d394-30ed-4c31-a6f3-5e79295d05bb" />
+
+
+---
 
