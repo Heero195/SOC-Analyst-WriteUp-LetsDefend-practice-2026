@@ -126,6 +126,7 @@ Includes the HTTP protocol version and the response code (**Status Code**):
 ### Response Body
 - The actual resource returned by the server based on client demand (e.g., HTML source to render, API response datasets, raw files).
 <img width="528" height="154" alt="image" src="https://github.com/user-attachments/assets/95a060df-f233-4bdb-802f-a5f9f7b9cae7" />
+
 ---
 
 ## 5) Detecting SQL Injection Attacks
