@@ -28,3 +28,14 @@ What Are Web Attacks?
 - Master the underlying mechanisms and classifications of major web vulnerabilities (SQL Injection, Command Injection, IDOR, etc.).
 - Understand the technical reasoning and motivation behind why attackers select specific attack methods.
 - Develop practical skills to recognize, analyze, and detect web attack indicators in real-world environments.
+
+  ---
+
+  ## 2) Why Detecting Web Attacks Important
+
+```
+If we examine the anatomy of an attack, we can clearly see that 
+the best scenario is to prevent the attack in its first phase. This is why there are various 
+security measures aimed at preventing and detecting threats 
+against web applications (WAF, IPS, SIEM rules...).
+```
