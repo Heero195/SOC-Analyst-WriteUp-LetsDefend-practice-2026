@@ -71,10 +71,16 @@ against web applications (WAF, IPS, SIEM rules...).
 - **Communication Model:** Client-Server architecture; the client sends an HTTP request, and the web server returns an HTTP response.
 - **Network Layer:** Operates at the application layer (**Layer 7 - Application**) of the OSI model, on top of underlying protocols such as Ethernet, IP, TCP, and SSL/TLS.
 
+<img width="528" height="368" alt="image" src="https://github.com/user-attachments/assets/cf4b3cb2-288d-4eb8-b6f5-2d1cc295a3e1" />
+
+
 ---
 
 ## HTTP Request Structure
 Consists of three main components, with an empty line separating the headers from the body:
+
+<img width="817" height="173" alt="image" src="https://github.com/user-attachments/assets/568f299a-373d-48e6-be63-151c1d6ebd49" />
+
 
 ### Request Line
 - **HTTP Method:** Standard methods such as GET, POST, etc.
@@ -98,6 +104,9 @@ Consists of three main components, with an empty line separating the headers fro
 ## HTTP Response Structure
 Composed of three core elements:
 
+<img width="581" height="373" alt="image" src="https://github.com/user-attachments/assets/5a1ce59e-ada1-4d9d-9aef-3c254a04653c" />
+
+
 ### Status Line
 Includes the HTTP protocol version and the response code (**Status Code**):
 - `100 - 199`: Informational responses.
@@ -116,3 +125,5 @@ Includes the HTTP protocol version and the response code (**Status Code**):
 
 ### Response Body
 - The actual resource returned by the server based on client demand (e.g., HTML source to render, API response datasets, raw files).
+<img width="528" height="154" alt="image" src="https://github.com/user-attachments/assets/95a060df-f233-4bdb-802f-a5f9f7b9cae7" />
+
