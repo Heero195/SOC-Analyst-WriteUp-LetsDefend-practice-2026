@@ -180,3 +180,51 @@ When analyzing web server access logs, automated tools exhibit distinct patterns
 
 ---
 
+
+
+## 6) Detecting Cross-Site Scripting (XSS) Attacks
+
+## What is Cross-Site Scripting (XSS) & Its Nature
+- **Definition:** An injection-based web vulnerability occurring when an application includes unsanitized user input directly into an HTTP response. This allows attackers to execute malicious scripts (primarily JavaScript) on the victim's browser.
+- **Impact (Client-side but highly dangerous):**
+  - **Session Hijacking:** Stealing session cookies (`document.cookie`).
+  - **Credential Theft:** Capturing user login details and personal information.
+  - **Malicious Redirection:** Forcing the browser to navigate to a malicious website (e.g., via `window.location`).
+
+---
+
+## Three Main Types of XSS
+- **Reflected XSS (Non-Persistent):** The malicious payload is part of the HTTP request (usually in URL parameters). The server immediately reflects the payload back to the victim's browser without storing it in the database. It is the most common type.
+- **Stored XSS (Persistent):** The attacker permanently injects the payload into the web application's database (e.g., via comments, forum posts, or profile fields). Anyone visiting the infected page will execute the malicious script. This is the **most dangerous** type.
+- **DOM-Based XSS:** The attack payload is executed as a result of modifying the DOM "environment" directly in the victim's browser using legitimate client-side scripts. The payload may not even reach the back-end server.
+
+---
+
+## Identifying XSS Payloads in Requests & Logs
+- **Special Characters:** Look for characters like `< > " ' / = ;` and their URL-encoded equivalents (e.g., `%3C`, `%3E`, `%22`, `%27`).
+- **HTML Tags & JS Keywords:** Common indicators include `<script>`, `alert()`, `prompt()`, `console.log()`, `window.location`, `document.cookie`, `onerror=`, and `onload=`.
+- **Defense Mechanisms:** Always use **HTML Encoding** on user data before rendering it to the interface. Utilize web frameworks properly and keep them updated to patch inherent vulnerabilities.
+
+<img width="1337" height="617" alt="image" src="https://github.com/user-attachments/assets/46532b4b-169d-4615-933b-0d14e04447ef" />
+
+
+
+
+
+---
+
+## SOC Analyst Access Log Investigation Workflow
+1. **URL Decoding:** Convert percent-encoded strings (`%XX`) back to plaintext to reveal and read the JavaScript payloads.
+<img width="1149" height="678" alt="image" src="https://github.com/user-attachments/assets/3b6fa7cc-bfde-48c3-aa64-fc8b81e3e5ab" />
+
+2. **Identify the Attack Vector:** Locate the specific parameter being targeted (e.g., the search parameter `?s=` in WordPress).
+3. **Detect Automated Tools:**
+   - **User-Agent:** Often reveals the name of the script library or vulnerability scanner (e.g., `Python-urllib`, `Nikto`, `sqlmap`).
+   - **Request Frequency:** Automated tools send payloads at a highly consistent and rapid rate (e.g., one request every 3-4 seconds).
+4. **Source IP Considerations:** If the web application is behind a proxy or CDN (like Cloudflare), the IP recorded in standard access logs might be the CDN's IP, not the actual attacker's IP. (Investigate headers like `X-Forwarded-For` if available).
+5. **Evaluate Attack Success (Success vs. Fail):** You must review the HTTP Response Body to see if the script was successfully rendered or escaped. Without access to the response body, it is difficult to definitively confirm if the attack succeeded.
+
+---
+
+
+
