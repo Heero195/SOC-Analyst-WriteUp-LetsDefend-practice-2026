@@ -226,5 +226,31 @@ When analyzing web server access logs, automated tools exhibit distinct patterns
 
 ---
 
+## 7) Detecting Command Injection Attacks
+
+## Definition
+Occurs when user input data is unsanitized and passed directly to the operating system shell. Attackers exploit this to execute commands directly on the operating system to take control of the system.
+
+## Mechanism
+Attackers use command separators (such as the `;` character) to inject malicious commands. 
+- **Example:** Instead of entering a normal file name, the attacker enters `letsdefend;ls;.txt`. The operating system will sequentially run 3 commands: `cp letsdefend`, `ls` (directory listing), and `.txt`. 
+- **Consequences:** The consequences can include shutting down the server (the `shutdown` command) or creating a reverse shell to infiltrate deeper into the system.
+
+## Prevention Methods
+- **Sanitize Input:** Always sanitize data received from users (never trust any input, including file names).
+- **Limit User Privileges:** Set the web application's user rights to the lowest possible level, avoiding administrator privileges.
+- **Isolation:** Use virtualization technologies such as Docker.
+
+## Detection Methods (For SOC Analysts)
+- **Check All Fields:** Examine all areas of the web request (as the vulnerability can exist in multiple locations).
+- **Identify OS Commands:** Look for common terminal command keywords in the data received from the user, such as: `dir`, `ls`, `cp`, `cat`, `type`.
+- **Recognize Payloads:** Familiarize yourself with commonly used Command Injection payloads (e.g., reverse shell payloads).
+
+## Real-world Example (2014 Shellshock Vulnerability)
+Attackers exploited a bash flaw to inject commands into unexpected HTTP Headers like the User-Agent (e.g., `User-Agent: () { :;}; echo "NS:" $(</etc/passwd)`) to exfiltrate system information.
+
+---
+
+
 
 
