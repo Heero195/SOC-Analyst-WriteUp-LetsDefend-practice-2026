@@ -31,7 +31,7 @@ What Are Web Attacks?
 
   ---
 
-  ## 2) Why Detecting Web Attacks Important
+## 2) Why Detecting Web Attacks Important
 
 ```
 If we examine the anatomy of an attack, we can clearly see that 
@@ -39,3 +39,26 @@ the best scenario is to prevent the attack in its first phase. This is why there
 security measures aimed at preventing and detecting threats 
 against web applications (WAF, IPS, SIEM rules...).
 ```
+---
+
+
+## 3) OWASP Overview
+
+- **Definition:** The Open Worldwide Application Security Project (OWASP) is a non-profit foundation dedicated to improving software security.
+- **Significance:** It serves as one of the world's most reputable and authoritative resources for web application security.
+
+---
+
+## OWASP Top 10
+- Periodically every few years, OWASP releases a list identifying the ten most critical security risks facing web applications.
+- The 2021 OWASP Top 10 list includes:
+  1. **Broken Access Control:** Failures in enforcing permissions, allowing unauthorized access or privilege escalation.
+  2. **Cryptographic Failures:** Flaws related to cryptography, exposing sensitive data due to weak or missing encryption.
+  3. **Injection:** Injection flaws where hostile data is sent to an interpreter (e.g., SQLi, Command Injection, LDAP Injection).
+  4. **Insecure Design:** Flaws resulting from missing or ineffective security design and architectural patterns.
+  5. **Security Misconfiguration:** Improperly configured security controls, default passwords, or overly permissive settings.
+  6. **Vulnerable and Outdated Components:** Risks from using unpatched, unsupported, or legacy third-party libraries and dependencies.
+  7. **Identification and Authentication Failures:** Flaws in validating user identity, authentication mechanisms, or session management.
+  8. **Software and Data Integrity Failures:** Code and infrastructure that do not protect against integrity violations (e.g., untrusted plugins or unverified CI/CD pipelines).
+  9. **Security Logging and Monitoring Failures:** Insufficient logging, monitoring, and alerting, leaving attacks undetected in real time.
+  10. **Server-Side Request Forgery (SSRF):** A vulnerability that allows an attacker to induce the server-side application to make HTTP requests to an unintended destination.
